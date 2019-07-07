@@ -4,18 +4,21 @@ import './App.css';
 const MovieList = (props) => {
   return (
     <div>
-      {props.movies.map(movie => <Movie {...movie}/>)}
+      {props.movies.map(movie => <Movie key={movie.id} {...movie}/>)}
     </div>
   );
 }
 
 const Movie = (props) => {
   return (
-    <div>
-      <h2>{props.title}</h2>
-      <p>{props.release_date}</p>
-      <p>{props.overview}</p>
-      <p>{props.vote_average}</p>
+    <div className="movie">
+      <img src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${props.poster_path}`}/>
+      <div className="movie-details">
+        <h2>{props.title}</h2>
+        <p>{props.release_date}</p>
+        <p>{props.overview}</p>
+        <p>{props.vote_average}</p>
+        </div>
     </div>
   );
 }
@@ -48,7 +51,7 @@ const App = (props) => {
       setData(prevState => [...prevState,...moviesData]);
   }
   return (
-    <div>
+    <div className="App">
       <h1>{props.title}</h1>
       <Search onSubmit={generateList}/>
       <MovieList movies={data}/>

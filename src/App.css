@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color:#fff;
+  box-sizing: border-box;
+  width:600px;
+  margin:15px auto;
+  padding: 10px;
+  border-radius: 10px;
+  min-height:450px;
 }
 
 .App-logo {
@@ -21,6 +28,24 @@
 
 .App-link {
   color: #61dafb;
+}
+
+h2{
+  margin-top:0;
+}
+
+.movie{
+  display:flex;
+  margin: 20px 0;
+}
+
+.movie img {
+  height: 270px;
+}
+
+.movie-details{
+  text-align:left;
+  padding-left: 15px;
 }
 
 @keyframes App-logo-spin {
