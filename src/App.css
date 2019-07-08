@@ -9,29 +9,29 @@
   min-height:450px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
 
 h2{
   margin-top:0;
+}
+
+form{
+  background-color: #fbfbfb;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+input[type="text"]{
+  padding: 0.75rem 0.55rem 0.75rem 1rem;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  /*border-radius: .5em;*/
+  width: 40%;
+  margin-right: 10px;
 }
 
 .movie{
@@ -46,6 +46,17 @@ h2{
 .movie-details{
   text-align:left;
   padding-left: 15px;
+}
+
+.year{
+  color:#aaa;
+  font-size: 12px;
+}
+.year::before{
+  content:'(';
+}
+.year::after{
+  content:')';
 }
 
 @keyframes App-logo-spin {

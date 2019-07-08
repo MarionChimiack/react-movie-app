@@ -10,14 +10,15 @@ const MovieList = (props) => {
 }
 
 const Movie = (props) => {
+  let releaseYear = props.release_date.split('-')[0];
+  let score = props.vote_average;
   return (
     <div className="movie">
       <img src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${props.poster_path}`}/>
       <div className="movie-details">
-        <h2>{props.title}</h2>
-        <p>{props.release_date}</p>
+        <h2>{props.title} <span className="year">{releaseYear}</span></h2>
         <p>{props.overview}</p>
-        <p>{props.vote_average}</p>
+        <p style={{color: (score > 5 ? 'green' : 'red')}}>{score}</p>
         </div>
     </div>
   );
@@ -32,13 +33,13 @@ const Search = (props) => {
       const data = await response.json();
       props.onSubmit(data.results);
     } catch (error){
-      console.log(error);
+      throw(error);
     }
   }
   return (
     <div>
       <form onSubmit={submitSearch}>
-        <input type="text" ref={input} placeholder="Search for something" required/>
+        <input type="text" ref={input} placeholder="Search for a movie" required/>
         <button>Search</button>
       </form>
     </div>
