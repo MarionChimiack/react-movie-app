@@ -28,10 +28,12 @@ const Search = (props) => {
   const input = createRef();
   const submitSearch = async (event) => {
     event.preventDefault();
+    props.clear();
     try{
       const response = await fetch(`https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=${input.current.value}&language=en-US&api_key=9e9995195d663f583df605660d2316f5`);
       const data = await response.json();
       props.onSubmit(data.results);
+      input.current.value = " ";
     } catch (error){
       throw(error);
     }
@@ -51,10 +53,13 @@ const App = (props) => {
   const generateList = (moviesData) => {
       setData(prevState => [...prevState,...moviesData]);
   }
+  const clearSearch = () => {
+    setData([]);
+  }
   return (
     <div className="App">
       <h1>{props.title}</h1>
-      <Search onSubmit={generateList}/>
+      <Search clear={clearSearch} onSubmit={generateList}/>
       <MovieList movies={data}/>
     </div>
   );
